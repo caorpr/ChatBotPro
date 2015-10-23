@@ -18,7 +18,7 @@ public class ChatController
 {
 	
 	
-	private Chatbot chatBotClay; // simpleBot = 
+	private Chatbot chatBotClay; // simpleBot 
 	private ChatDisplay view; //display
 	
 	
@@ -32,6 +32,7 @@ public class ChatController
 	public void start()
 	{
 		view.displayResponse("Hello " + chatBotClay.getUserName());
+		chat();
 	}
 	
 	private void chat()
@@ -39,7 +40,7 @@ public class ChatController
 		String textFromUser = view.getAnswer("Talk to the chatbot");   
 		while(chatBotClay.lengthChecker(textFromUser))
 		{
-			textFromUser = view.displayResponse("wow" + textFromUser);
+			textFromUser = view.getAnswer("wow" + textFromUser);
 		}
 	}
 }

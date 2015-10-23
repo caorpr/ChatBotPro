@@ -16,7 +16,6 @@ public class Chatbot
 		this.userName = userName;
 	}
 	
-	C
 	
 	private void buildMemesList()
 	{
@@ -32,7 +31,7 @@ public class Chatbot
 	
 	
 	
-	public boolean lenghtChecker(String currentInput)
+	public boolean lengthChecker(String currentInput)
 	{
 		boolean hasLength = false;
 		if(currentInput != null)
@@ -47,7 +46,7 @@ public class Chatbot
 	}
 	
 	
-<<<<<<< HEAD:src/chat/model/Chatbot.java
+
 	public String getUserName()
 	{
 		return userName;
@@ -55,8 +54,9 @@ public class Chatbot
 	
 	public String getContent()
 	{
-		return getContent;
-=======
+		return content;
+	}
+
 	public boolean contentChecker(String currentInput)
 	{
 		return false;
@@ -67,27 +67,13 @@ public class Chatbot
 		return false;
 	}
 	
-	public String getUserName()
-	{
-		return null;
-	}
-	
-	public String getContent()
-	{
-		return null;
-	}
 	
 	public ArrayList<String> getMemesList()
 	{
 		return null;
->>>>>>> origin/master:src/chat/model/Chat.java
+
 	}
-	
-	public ArrayList<String> getMemesList();
-	{
-		
-	}
-	
+
 	public ArrayList<String> getPoliticalTopicList()
 	{
 		return null;
