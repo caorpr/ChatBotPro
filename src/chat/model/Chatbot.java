@@ -2,17 +2,21 @@ package chat.model;
 
 import java.util.ArrayList;
 
-public class Chat 
+
+
+public class Chatbot 
 {
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
 	private String userName;
 	private String content;
 	
-	public Chat(String userName)
+	public Chatbot(String userName)
 	{
-		
+		this.userName = userName;
 	}
+	
+	C
 	
 	private void buildMemesList()
 	{
@@ -43,8 +47,20 @@ public class Chat
 	}
 	
 	
+	public String getUserName()
+	{
+		return userName;
+	}
 	
+	public String getContent()
+	{
+		return getContent;
+	}
 	
+	public ArrayList<String> getMemesList();
+	{
+		
+	}
 	
 	
 }

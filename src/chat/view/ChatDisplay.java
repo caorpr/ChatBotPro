@@ -27,7 +27,7 @@ public class ChatDisplay
 	 * 
 	 * @param showWords
 	 */
-	public void displayResponse(String showWords)
+	public void displayResponse(String showWords)  // displayText
 	{
 		JOptionPane.showMessageDialog(null, showWords);
 	}
