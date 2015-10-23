@@ -43,8 +43,39 @@ public class Chat
 	}
 	
 	
+	public boolean contentChecker(String currentInput)
+	{
+		return false;
+	}
+	
+	public boolean politicalTopicChecker(String currentInput)
+	{
+		return false;
+	}
+	
+	public String getUserName()
+	{
+		return null;
+	}
+	
+	public String getContent()
+	{
+		return null;
+	}
+	
+	public ArrayList<String> getMemesList()
+	{
+		return null;
+	}
 	
 	
+	public ArrayList<String> getPoliticalTopicList()
+	{
+		return null;
+	}
 	
-	
+	public void setContent(String content)
+	{
+		
+	}
 }
