@@ -47,6 +47,7 @@ public class Chatbot
 	}
 	
 	
+<<<<<<< HEAD:src/chat/model/Chatbot.java
 	public String getUserName()
 	{
 		return userName;
@@ -55,6 +56,31 @@ public class Chatbot
 	public String getContent()
 	{
 		return getContent;
+=======
+	public boolean contentChecker(String currentInput)
+	{
+		return false;
+	}
+	
+	public boolean politicalTopicChecker(String currentInput)
+	{
+		return false;
+	}
+	
+	public String getUserName()
+	{
+		return null;
+	}
+	
+	public String getContent()
+	{
+		return null;
+	}
+	
+	public ArrayList<String> getMemesList()
+	{
+		return null;
+>>>>>>> origin/master:src/chat/model/Chat.java
 	}
 	
 	public ArrayList<String> getMemesList();
@@ -62,5 +88,13 @@ public class Chatbot
 		
 	}
 	
+	public ArrayList<String> getPoliticalTopicList()
+	{
+		return null;
+	}
 	
+	public void setContent(String content)
+	{
+		
+	}
 }
