@@ -24,6 +24,9 @@ public class Chatbot
 	{
 
 	}
+	
+	
+	
 	private void buildPoliticalTopicsList()
 	{
 		
@@ -61,7 +64,13 @@ public class Chatbot
 
 	public boolean contentChecker(String currentInput)
 	{
-		return false;
+		boolean hasContent = false;
+		if(currentInput.toLowerCase().contains(content.toLowerCase()))
+		{
+			hasContent = true;
+		}
+		
+		return hasContent;
 	}
 	
 	public boolean politicalTopicChecker(String currentInput)

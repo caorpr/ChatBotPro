@@ -35,12 +35,23 @@ public class ChatController
 		chat();
 	}
 	
+	
+	
 	private void chat()
 	{
 		String textFromUser = view.getAnswer("Talk to the chatbot");   
 		while(chatBotClay.lengthChecker(textFromUser))
 		{
-			textFromUser = view.getAnswer("wow" + textFromUser);
+			if(chatBotClay.contentChecker(textFromUser))
+			{
+					view.displayResponse("Wow, I had no idea you loved " + chatBotClay.getContent());
+			}
+	
+			textFromUser = view.getAnswer(textFromUser);
 		}
 	}
+	
+	
+	
+
 }
