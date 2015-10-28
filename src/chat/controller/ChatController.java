@@ -50,8 +50,7 @@ public class ChatController
 			textFromUser = view.getAnswer(textFromUser);
 		}
 	}
-	
-	
-	
-
 }
+
+
+									
