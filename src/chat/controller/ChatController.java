@@ -11,7 +11,6 @@ import chat.view.ChatDisplay; //ChatView
 /**
  * 
  * @author cand3952
- * @version 1.0 10/21/15
  */
 
 public class ChatController 
@@ -44,12 +43,17 @@ public class ChatController
 		{
 			if(chatBotClay.contentChecker(textFromUser))
 			{
-					view.displayResponse("Wow, I had no idea you loved " + chatBotClay.getContent());
+					view.displayResponse("Wow, I had no idea you loved " + chatBotClay.getContent() + "bra!");
+			}
+			else if(chatBotClay.memeChecker(textFromUser));
+			{
+				view.displayResponse("We cannot understand your input.");
 			}
 	
 			textFromUser = view.getAnswer(textFromUser);
 		}
 	}
+	
 }
 
 
