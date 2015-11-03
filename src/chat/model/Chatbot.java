@@ -11,6 +11,9 @@ public class Chatbot
 	private String userName;
 	private String content;
 	
+	
+	private ArrayList<String> RandomTopic;
+	
 	public Chatbot(String userName)
 	{
 		this.memesList = new ArrayList<String>();
@@ -110,6 +113,44 @@ public class Chatbot
 		return hasMeme;
 	}
 
+	
+	public String prossessConversation(String currentInput)
+	{
+		String nextConversation = "what do you want now?";
+		int randomTopic = (int) (Math.random() * 5);  //This is a number between 0 and 4, not up to 5.
+		
+		switch (randomTopic)
+		{
+		case 0:
+			if(contentChecker(currentInput))
+			{
+				nextConversation = "Hey you talked about stuff" + "Cool! Now what?";
+			}
+		case 1:
+			if(memeChecker(currentInput))
+			{
+				nextConversation = "Wow bro!" + "Now what?";
+			}
+		case 3:
+			//Choose your own test here.
+			if(currentInput.contains("star wars"));
+			{
+				nextConversation = "Did you know Darth Vader is Luke's dad?" + "what else do you like?";
+			}
+		case 4:
+			//Random Chat topic here
+			nextConversation = "Wow that's great." + "Do you like watermelon?";
+		default:
+			//Never will happen, but just in case the number generator is stupid, it's here.
+			nextConversation = "Don't know why you are seeing this, please shut off this program." 
+								+ "have you shut off the program yet?";
+			break;
+		}
+		
+		return nextConversation;
+	}
+	
+	
 	public ArrayList<String> getMemesList()
 	{
 

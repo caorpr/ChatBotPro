@@ -43,7 +43,7 @@ public class ChatController
 		{
 			if(chatBotClay.contentChecker(textFromUser))
 			{
-					view.displayResponse("Wow, I had no idea you loved " + chatBotClay.getContent() + "bra!");
+					view.displayResponse("Wow, I had no idea you loved " + chatBotClay.getContent() + " bra!");
 			}
 			else if(chatBotClay.memeChecker(textFromUser));
 			{
