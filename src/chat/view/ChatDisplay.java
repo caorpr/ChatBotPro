@@ -41,6 +41,6 @@ public class ChatDisplay
 	 */
 	public void displayResponse(String showWords)  // displayText
 	{
-		JOptionPane.showMessageDialog(null, showWords);
+		JOptionPane.showMessageDialog(null, showWords, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon);
 	}
 }
