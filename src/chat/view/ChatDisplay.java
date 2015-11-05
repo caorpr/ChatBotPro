@@ -1,5 +1,6 @@
 package chat.view;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -10,6 +11,16 @@ import javax.swing.JOptionPane;
 public class ChatDisplay
 {
 	
+		private String windowMessage;
+		private ImageIcon chatIcon;
+		
+		public ChatDisplay()
+		{
+			windowMessage = "Press q to receive 20$!!";
+			chatIcon = new ImageIcon(getClass().getResource("images/trollface"));
+		}
+	
+
 	/**
 	 *  
 	 * This is what is shown in the Popup window. Usually a question.
