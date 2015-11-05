@@ -23,14 +23,15 @@ public class ChatDisplay
 
 	/**
 	 *  
+	 *  
 	 * This is what is shown in the Popup window. Usually a question.
 	 * @param showWords
-	 * @return
+	 * @return text supplied by use
 	 */
 	public String getAnswer(String showWords)
 	{
 		String answer = "";
-		answer = JOptionPane.showInputDialog(null, showWords);
+		answer = JOptionPane.showInputDialog(null, showWords, windowMessage, JOptionPane.INFORMATION_MESSAGE, chatIcon, null, "Type here please").toString();
 		return answer;
 	}
 	
@@ -43,4 +44,3 @@ public class ChatDisplay
 		JOptionPane.showMessageDialog(null, showWords);
 	}
 }
-
