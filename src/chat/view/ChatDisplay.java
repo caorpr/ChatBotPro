@@ -17,7 +17,7 @@ public class ChatDisplay
 		public ChatDisplay()
 		{
 			windowMessage = "Press q to receive 20$!!";
-			chatIcon = new ImageIcon(getClass().getResource("images/trollface"));
+			chatIcon = new ImageIcon(getClass().getResource("images/trollface.jpg"));
 		}
 	
 
