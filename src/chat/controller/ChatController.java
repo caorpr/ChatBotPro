@@ -1,6 +1,7 @@
 package chat.controller;
 
 import chat.model.Chatbot;
+import chat.view.ChatFrame;
 import chat.view.ChatDisplay; //ChatView
 // simpleBot = chatBotClay
 // display = view
@@ -16,7 +17,7 @@ import chat.view.ChatDisplay; //ChatView
 public class ChatController 
 {
 	
-	
+	private ChatFrame BaseFrame; // for the GUI
 	private Chatbot chatBotClay; // simpleBot 
 	private ChatDisplay view; //display
 	
@@ -26,7 +27,12 @@ public class ChatController
 		view = new ChatDisplay(); 
 		String user = view.getAnswer("What is your name?");
 		chatBotClay = new Chatbot(user);
+		
+		//GUI BELOW
+		baseFrame = new ChatFrame(this);
 	}
+	
+
 	
 	public void start()
 	{
@@ -53,6 +59,13 @@ public class ChatController
 			textFromUser = view.getAnswer(textFromUser);
 		}
 	}
+	
+	
+
+	
+
+	
+	
 	
 }
 
