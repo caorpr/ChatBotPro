@@ -1,32 +1,48 @@
 package chat.view;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;     //  but Mr. H says it is okay for any of the projects that we do.
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 
 import java.awt.Color;
 import java.awt.event.*;
 
 import chat.controller.ChatController;
 
+import javax.swing.*;
 
-public class ChatPanel
+public class ChatPanel extends JPanel
 {
 	private ChatController baseController;
 	private JButton firstButton;
 	private JTextField firstTextField;
 	private SpringLayout baseLayout;
 	
+	//ChatBot stuff below
+	
+	private String windowMessage;
+	private ImageIcon chatIcon;
+	
+	//More ChatBot
+	
 	public ChatPanel(ChatController baseController)
 	{
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
-		firstButton = new JButton("Don' Click the button!");
-		
+		firstButton = new JButton("Don't Click the button!");
 		firstTextField = new JTextField("Type Words Here");
 		
 		setupPanel();
 		setupLayout();
 		setupListeners();
+	
+		
+		windowMessage = "Press q to receive 20$!!";
+		chatIcon = new ImageIcon(getClass().getResource("images/trollface.jpg"));
 	}
+
 	
 	private void setupPanel()
 	{
@@ -37,7 +53,11 @@ public class ChatPanel
 	
 	private void setupLayout()
 	{
-		//GUI GARBAGE STUFF!
+		baseLayout.putConstraint(SpringLayout.WEST, firstTextField, 162, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, firstTextField, -6, SpringLayout.NORTH, firstButton);
+		
+		baseLayout.putConstraint(SpringLayout.WEST, firstButton, 132, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, firstButton, -63, SpringLayout.SOUTH, this);
 	}
 	
 	
@@ -45,7 +65,6 @@ public class ChatPanel
 	{
 		firstButton.addActionListener(new ActionListener()
 		
-		this.addMouseListener(new MouseListener()
 		{
 			public void actionPerformed(ActionEvent click)
 			{
@@ -53,7 +72,7 @@ public class ChatPanel
 			}
 		});
 		
-		
+		this.addMouseListener(new MouseListener()
 		{
 			public void mouseClicked(MouseEvent clicked)
 			{
@@ -97,10 +116,52 @@ public class ChatPanel
 		});
 		
 		
+		this.addMouseMotionListener(new MouseMotionListener()
+		{
+			
+			
+			public void mouseMoved(MouseEvent moved)
+			{
+				firstButton.setText("Mouse X:" + moved.getX() + " Y: " + moved.getY());
+				
+				if((moved.getX() > 25 && moved.getX() < 40) && (moved.getY() > 50 && moved.getY() < 70))
+				{
+					changeRandomColor();
+				}
+			}
+			
+			public void mouseDragged(MouseEvent dragged)
+			{
+				firstTextField.setText("dragged!");
+			}
+			
+		});
 		
+	}
+	
+	private void changeRandomColor()
+	{
+		int red, green, blue;
 		
+		red = (int) (Math.random() * 256);
+		green = (int) (Math.random() * 256);
+		blue = (int) (Math.random() * 256);
 		
-		
-		
+		this.setBackground(new Color(red, green, blue));
+	}
+
+	//ALL CHATBOT BELOW
+	
+	public String getAnswer(String showWords)
+	{
+		String answer = "";
+		answer = JOptionPane.showInputDialog(null, showWords, windowMessage, JOptionPane.INFORMATION_MESSAGE, chatIcon, null, "Type Here").toString();
+		return answer;
+	}
+	
+	
+	public void displayResponse(String showWords)
+	{
+		JOptionPane.showMessageDialog(null, showWords, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon);
 	}
 }
