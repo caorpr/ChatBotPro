@@ -1,5 +1,6 @@
 package chat.controller;
 
+import ChatView;
 import chat.model.Chatbot;
 import chat.view.ChatFrame;
 import chat.view.ChatPanel; //ChatView
@@ -59,6 +60,10 @@ public class ChatController
 			textFromUser = view.getAnswer(textFromUser);
 		}
 	}
+
+
+
+
 	
 	
 

@@ -1,11 +1,19 @@
 package chat.view;
 
 import javax.swing.ImageIcon;
+<<<<<<< HEAD
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+=======
 import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;     //  but Mr. H says it is okay for any of the projects that we do.
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+>>>>>>> origin/master
 
+import java.awt.event.ActionListener;     //  but Mr. H says it is okay for any of the projects that we do.
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.event.*;
 
@@ -20,7 +28,11 @@ public class ChatPanel extends JPanel
 	private JTextField firstTextField;
 	private SpringLayout baseLayout;
 	
+<<<<<<< HEAD
+	//Chatbot stuff below
+=======
 	//ChatBot stuff below
+>>>>>>> origin/master
 	
 	private String windowMessage;
 	private ImageIcon chatIcon;
@@ -31,8 +43,18 @@ public class ChatPanel extends JPanel
 	{
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
+<<<<<<< HEAD
 		chatArea = new JButton("Don't Click the button!");
+=======
+		firstButton = new JButton("Don't Click the button!");
+<<<<<<< HEAD
+
+		
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 		firstTextField = new JTextField("Type Words Here");
+
 		
 		setupPanel();
 		setupLayout();
@@ -49,8 +71,8 @@ public class ChatPanel extends JPanel
 		this.setLayout(baseLayout);
 		this.add(firstButton);
 		this.add(firstTextField);
-	}
 	
+	}
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.WEST, firstTextField, 162, SpringLayout.WEST, this);
@@ -59,8 +81,6 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, firstButton, 132, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, firstButton, -63, SpringLayout.SOUTH, this);
 	}
-	
-	
 	private void setupListeners()
 	{
 		firstButton.addActionListener(new ActionListener()
@@ -114,8 +134,40 @@ public class ChatPanel extends JPanel
 			}
 			
 		});
+		this.addMouseMotionListener(new MouseMotionListener()
+		{
+			
+			
+			public void mouseMoved(MouseEvent moved)
+			{
+				firstButton.setText("Mouse X:" + moved.getX() + " Y: " + moved.getY());
+				
+				if((moved.getX() > 25 && moved.getX() < 40) && (moved.getY() > 50 && moved.getY() < 70))
+				{
+					changeRandomColor();
+				}
+			}
+			
+			public void mouseDragged(MouseEvent dragged)
+			{
+				firstTextField.setText("dragged!");
+			}
+			
+		});
 		
+	}
+	
+	private void changeRandomColor()
+	{
+		int red, green, blue;
 		
+<<<<<<< HEAD
+		red = (int) (Math.random() * 256);
+		green = (int) (Math.random() * 256);
+		blue = (int) (Math.random() * 256);
+		
+		this.setBackground(new Color(red, green, blue));	
+=======
 		this.addMouseMotionListener(new MouseMotionListener()
 		{
 			
@@ -163,5 +215,6 @@ public class ChatPanel extends JPanel
 	public void displayResponse(String showWords)
 	{
 		JOptionPane.showMessageDialog(null, showWords, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon);
+>>>>>>> origin/master
 	}
 }
