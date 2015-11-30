@@ -1,8 +1,15 @@
 package chat.view;
 
 import javax.swing.ImageIcon;
+<<<<<<< HEAD
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+=======
+import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;     //  but Mr. H says it is okay for any of the projects that we do.
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+>>>>>>> origin/master
 
 import java.awt.event.ActionListener;     //  but Mr. H says it is okay for any of the projects that we do.
 import java.awt.event.ActionEvent;
@@ -21,7 +28,11 @@ public class ChatPanel extends JPanel
 	private JTextField firstTextField;
 	private SpringLayout baseLayout;
 	
+<<<<<<< HEAD
 	//Chatbot stuff below
+=======
+	//ChatBot stuff below
+>>>>>>> origin/master
 	
 	private String windowMessage;
 	private ImageIcon chatIcon;
@@ -33,15 +44,23 @@ public class ChatPanel extends JPanel
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
 		firstButton = new JButton("Don't Click the button!");
+<<<<<<< HEAD
 
 		
+=======
+>>>>>>> origin/master
 		firstTextField = new JTextField("Type Words Here");
 
 		
 		setupPanel();
 		setupLayout();
 		setupListeners();
+	
+		
+		windowMessage = "Press q to receive 20$!!";
+		chatIcon = new ImageIcon(getClass().getResource("images/trollface.jpg"));
 	}
+
 	
 	private void setupPanel()
 	{
@@ -138,10 +157,60 @@ public class ChatPanel extends JPanel
 	{
 		int red, green, blue;
 		
+<<<<<<< HEAD
 		red = (int) (Math.random() * 256);
 		green = (int) (Math.random() * 256);
 		blue = (int) (Math.random() * 256);
 		
 		this.setBackground(new Color(red, green, blue));	
+=======
+		this.addMouseMotionListener(new MouseMotionListener()
+		{
+			
+			
+			public void mouseMoved(MouseEvent moved)
+			{
+				firstButton.setText("Mouse X:" + moved.getX() + " Y: " + moved.getY());
+				
+				if((moved.getX() > 25 && moved.getX() < 40) && (moved.getY() > 50 && moved.getY() < 70))
+				{
+					changeRandomColor();
+				}
+			}
+			
+			public void mouseDragged(MouseEvent dragged)
+			{
+				firstTextField.setText("dragged!");
+			}
+			
+		});
+		
+	}
+	
+	private void changeRandomColor()
+	{
+		int red, green, blue;
+		
+		red = (int) (Math.random() * 256);
+		green = (int) (Math.random() * 256);
+		blue = (int) (Math.random() * 256);
+		
+		this.setBackground(new Color(red, green, blue));
+	}
+
+	//ALL CHATBOT BELOW
+	
+	public String getAnswer(String showWords)
+	{
+		String answer = "";
+		answer = JOptionPane.showInputDialog(null, showWords, windowMessage, JOptionPane.INFORMATION_MESSAGE, chatIcon, null, "Type Here").toString();
+		return answer;
+	}
+	
+	
+	public void displayResponse(String showWords)
+	{
+		JOptionPane.showMessageDialog(null, showWords, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon);
+>>>>>>> origin/master
 	}
 }
