@@ -37,7 +37,7 @@ public class Chatbot
 		this.memesList.add("yugioh");
 		this.memesList.add("sanik");
 		this.memesList.add("luigi death stare");
-		this.memesList.add("blandk");
+		this.memesList.add("philosoraptor");
 	}
 	
 	

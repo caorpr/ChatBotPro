@@ -31,7 +31,7 @@ public class ChatPanel extends JPanel
 	{
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
-		firstButton = new JButton("Don't Click the button!");
+		chatArea = new JButton("Don't Click the button!");
 		firstTextField = new JTextField("Type Words Here");
 		
 		setupPanel();
