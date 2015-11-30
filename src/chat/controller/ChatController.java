@@ -1,5 +1,6 @@
 package chat.controller;
 
+import ChatView;
 import chat.model.Chatbot;
 import chat.view.ChatFrame;
 import chat.view.ChatDisplay; //ChatView
@@ -17,7 +18,7 @@ import chat.view.ChatDisplay; //ChatView
 public class ChatController 
 {
 	
-	private ChatFrame BaseFrame; // for the GUI
+	private ChatFrame baseFrame; // for the GUI
 	private Chatbot chatBotClay; // simpleBot 
 	private ChatDisplay view; //display
 	
@@ -59,6 +60,10 @@ public class ChatController
 			textFromUser = view.getAnswer(textFromUser);
 		}
 	}
+
+
+
+
 	
 	
 

@@ -7,7 +7,7 @@ import chat.controller.ChatController;
 public class ChatFrame extends JFrame
 {
 	
-	private CahtController baseController;
+	private ChatController baseController;
 	private ChatPanel basePanel;
 	
 	public ChatFrame (ChatController baseController)
