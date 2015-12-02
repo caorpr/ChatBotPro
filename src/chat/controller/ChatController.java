@@ -1,9 +1,10 @@
 package chat.controller;
 
-import ChatView;
+
 import chat.model.Chatbot;
 import chat.view.ChatFrame;
-import chat.view.ChatPanel; //ChatView
+import chat.view.ChatPanel;
+import chat.view.ChatView;//ChatView
 // simpleBot = chatBotClay
 // display = view
 // ChatView= ChatDisplay
@@ -17,19 +18,17 @@ import chat.view.ChatPanel; //ChatView
 
 public class ChatController 
 {
-	
+	private Chatbot chatBotClay;  // sipmleBot
+	private ChatView view; //display
 	private ChatFrame baseFrame; // for the GUI
-	private Chatbot chatBotClay; // simpleBot 
-	private ChatPanel view; //display
+	
 	
 	
 	public ChatController()
 	{
-		view = new ChatPanel();
+		view = new ChatView();
 		String user = view.getAnswer("What is your name?");
 		chatBotClay = new Chatbot(user);
-		
-		//GUI BELOW
 		baseFrame = new ChatFrame(this);
 	}
 	
@@ -48,28 +47,48 @@ public class ChatController
 		String textFromUser = view.getAnswer("Talk to the chatbot");   
 		while(chatBotClay.lengthChecker(textFromUser))
 		{
-			if(chatBotClay.contentChecker(textFromUser))
-			{
-					view.displayResponse("Wow, I had no idea you loved " + chatBotClay.getContent() + " bra!");
-			}
-			else if(chatBotClay.memeChecker(textFromUser));
-			{
-				view.displayResponse("We cannot understand your input.");
-			}
-	
+			textFromUser = chatBotClay.prossessConversation(textFromUser);
 			textFromUser = view.getAnswer(textFromUser);
 		}
 	}
-
-
-
-
 	
 	
-
+	public String fromUserToChatbot(String conversation)
+	{
+		String botResponse = "";
+		
+		if(chatBotClay.quitChecker(conversation))
+		{
+			shutDown();
+		}
+		
+		botResponse = chatBotClay.prossessConversation(textFromUser);
+		
+		return botResponse;
+	}
 	
-
 	
+	
+	public Chatbot getChatbot()
+	{
+		return chatBotClay;
+	}
+	
+	public ChatView getChatView()
+	{
+		return view;
+	}
+	
+	public ChatFrame getBaseFrame()
+	{
+		return baseFrame;
+	}
+	
+	private void ShutDown()
+	{
+		view.displayResponse("Goodbye, " + chatBotClay.getUserName() + " it has been fun.");
+		System.exit(0);
+	}
 	
 	
 }
