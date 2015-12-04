@@ -28,6 +28,6 @@ public class ChatFrame extends JFrame
 	
 	public ChatController getBaseController()
 	{
-		//stuffs in the thing!
+		return baseController;
 	}
 }

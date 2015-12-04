@@ -223,17 +223,17 @@ public class Chatbot
 	public ArrayList<String> getMemesList()
 	{
 
-		return null;
+		return memesList;
 
 	}
 
 	public ArrayList<String> getPoliticalTopicList()
 	{
-		return null;
+		return politicalTopicList;
 	}
 	
 	public void setContent(String content)
 	{
-		
+		this.content = content;
 	}
 }

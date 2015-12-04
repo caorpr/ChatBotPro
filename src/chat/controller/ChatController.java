@@ -62,7 +62,7 @@ public class ChatController
 			shutDown();
 		}
 		
-		botResponse = chatBotClay.prossessConversation(textFromUser);
+		botResponse = chatBotClay.prossessConversation(conversation);
 		
 		return botResponse;
 	}
@@ -84,7 +84,7 @@ public class ChatController
 		return baseFrame;
 	}
 	
-	private void ShutDown()
+	private void shutDown()
 	{
 		view.displayResponse("Goodbye, " + chatBotClay.getUserName() + " it has been fun.");
 		System.exit(0);

@@ -18,16 +18,8 @@ import javax.swing.*;
 public class ChatPanel extends JPanel
 {
 	private ChatController baseController;
-	private JButton firstButton;
-	private JTextField firstTextField;
 	private SpringLayout baseLayout;
-	
 
-	//Chatbot stuff below
-
-	//ChatBot stuff below
-
-	
 	private String windowMessage;
 	private ImageIcon chatIcon;
 	private JTextArea chatArea;
@@ -41,8 +33,9 @@ public class ChatPanel extends JPanel
 		this.baseController = baseController;
 		chatArea = new JTextArea(10,30);
 		typingField = new JTextField(30);
-		promptLabel = new JLabel("stuff");
+		promptLabel = new JLabel("");
 		baseLayout = new SpringLayout();
+	
 		submitButton = new JButton("suff");
 
 		
@@ -58,14 +51,23 @@ public class ChatPanel extends JPanel
 	
 	private void setupPanel()
 	{
+		this.add(chatArea);
+		this.add(typingField);
+		this.add(promptLabel);
 		this.setLayout(baseLayout);
-		this.add(firstButton);
-		this.add(firstTextField);
+		this.add(submitButton);
+		typingField.setToolTipText("hints");
 	}
 	
 	
 	private void setupLayout()
 	{
+		baseLayout.putConstraint(SpringLayout.WEST, typingField, 10, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, typingField, -21, SpringLayout.NORTH, chatArea);
+		baseLayout.putConstraint(SpringLayout.WEST, chatArea, 10, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, chatArea, -36, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, submitButton, 10, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, submitButton, 163, SpringLayout.WEST, this);
 
 	}
 	
@@ -73,7 +75,7 @@ public class ChatPanel extends JPanel
 	private void setupListeners()
 	{
 		
-		firstButton.addActionListener(new ActionListener()
+		submitButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
 			{
@@ -89,10 +91,6 @@ public class ChatPanel extends JPanel
 		
 	
 	
-	public JButton getButton()
-	{
-		return submitButton;
-	}
 
 	public JTextField getTextField()
 	{
