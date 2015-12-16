@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class Chatbot 
 {
+	/**
+	 * Setting up everything.
+	 */
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
 	private ArrayList<String> keyboardMashList;
@@ -18,6 +21,10 @@ public class Chatbot
 	
 	private ArrayList<String> RandomTopic;
 	
+	/**
+	 * Setting up stuff for the GUI and code.
+	 * @param userName
+	 */
 	public Chatbot(String userName)
 	{
 		this.memesList = new ArrayList<String>();
@@ -33,6 +40,9 @@ public class Chatbot
 		buildQuitList();
 	}
 	
+	/**
+	 * Putting stuff into the MemesList Array
+	 */
 	
 	private void buildMemesList()
 	{
@@ -49,6 +59,9 @@ public class Chatbot
 	}
 	
 	
+	/**
+	 * All of the stuff in the TopicsList.
+	 */
 	
 	private void buildPoliticalTopicsList()
 	{
@@ -64,6 +77,9 @@ public class Chatbot
 		this.politicalTopicList.add("Debates");
 	}
 	
+	/**
+	 * Adding stuff to the MashList
+	 */
 	private void buildKeyboardMashList()
 	{
 		this.keyboardMashList.add("sdf");
@@ -73,6 +89,7 @@ public class Chatbot
 	}
 	
 	
+
 	private void buildQuitList()
 	{
 		this.quitList.add("quit");
@@ -81,7 +98,11 @@ public class Chatbot
 	
 	
 	
-	
+	/**
+	 * checks the length of whatever you want it to check.
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean lengthChecker(String currentInput)
 	{
 		boolean hasLength = false;
@@ -108,6 +129,11 @@ public class Chatbot
 		return content;
 	}
 
+	/**
+	 * Checks the "content" in what you type in, converting it to Lower-case beforehand.
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean contentChecker(String currentInput)
 	{
 		boolean hasContent = false;
@@ -119,6 +145,11 @@ public class Chatbot
 		return hasContent;
 	}
 	
+	/**
+	 * Checks what you type in, and matches it with a political topic.
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
 		boolean hasPoliticalTopic = false;
@@ -133,6 +164,11 @@ public class Chatbot
 		return hasPoliticalTopic;
 	}
 	
+	/**
+	 * Checks for memes in what you type in.
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean memeChecker(String currentInput)
 	{
 		boolean hasMeme = false;
@@ -148,6 +184,11 @@ public class Chatbot
 		return hasMeme;
 	}
 	
+	/**
+	 * Checks to see if you have mashed your keyboard.
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean keyboardMashChecker(String currentInput)
 	{
 		boolean hasMash = false;
@@ -164,6 +205,11 @@ public class Chatbot
 		return hasMash;
 	}
 
+	/**
+	 * Checks if you typed in quit, and then if you did, it exits the program.
+	 * @param currentInput
+	 * @return
+	 */
 	public boolean quitChecker(String currentInput)
 	{
 		boolean hasQuit = false;
@@ -177,7 +223,11 @@ public class Chatbot
 	}
 	
 	
-	
+	/**
+	 * Random Conversations are here. 
+	 * @param currentInput
+	 * @return
+	 */
 	public String prossessConversation(String currentInput)
 	{
 		String nextConversation = "what do you want now?";

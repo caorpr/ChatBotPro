@@ -1,5 +1,9 @@
 package chat.view;
 
+
+/**
+ * MUCH IMPORTS
+ */
 import javax.swing.ImageIcon;
 
 import javax.swing.JComponent;
@@ -19,7 +23,6 @@ public class ChatPanel extends JPanel
 {
 	private ChatController baseController;
 	private SpringLayout baseLayout;
-
 	private String windowMessage;
 	private ImageIcon chatIcon;
 	private JTextArea chatArea;
@@ -28,6 +31,10 @@ public class ChatPanel extends JPanel
 	private JButton submitButton;
 	//More ChatBot
 	
+	/**
+	 * Sets up all of the methods, and GUI.
+	 * @param baseController
+	 */
 	public ChatPanel(ChatController baseController)
 	{
 		this.baseController = baseController;
@@ -49,6 +56,9 @@ public class ChatPanel extends JPanel
 	}
 	
 	
+	/**
+	 * All this is for the GUI, and telling it what to do.
+	 */
 	private void setupPanel()
 	{
 		this.add(chatArea);
@@ -59,7 +69,9 @@ public class ChatPanel extends JPanel
 		typingField.setToolTipText("hints");
 	}
 	
-	
+	/**
+	 * Crap code for the GUI.
+	 */
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.WEST, typingField, 10, SpringLayout.WEST, this);
@@ -68,10 +80,11 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.SOUTH, chatArea, -36, SpringLayout.SOUTH, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, submitButton, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, submitButton, 163, SpringLayout.WEST, this);
-
 	}
 	
-	
+	/**
+	 * Sets up stuff that waits to be acted upon.
+	 */
 	private void setupListeners()
 	{
 		
@@ -90,7 +103,6 @@ public class ChatPanel extends JPanel
 		
 		
 	
-	
 
 	public JTextField getTextField()
 	{
@@ -99,7 +111,11 @@ public class ChatPanel extends JPanel
 
 
 	//ALL CHATBOT BELOW
-	
+	/**
+	 * Gets your input, and puts it into the "answer" variable.
+	 * @param showWords
+	 * @return
+	 */
 	public String getAnswer(String showWords)
 	{
 		String answer = "";
@@ -107,7 +123,10 @@ public class ChatPanel extends JPanel
 		return answer;
 	}
 	
-	
+	/**
+	 * The window for the chatbot's response.
+	 * @param showWords
+	 */
 	public void displayResponse(String showWords)
 	{
 		JOptionPane.showMessageDialog(null, showWords, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon);

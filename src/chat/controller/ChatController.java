@@ -11,19 +11,18 @@ import chat.view.ChatView;//ChatView
 // displayText = displayResponse
 // collectUserText = getAnswer
 
-/**
- * 
- * @author cand3952
- */
 
 public class ChatController 
 {
+	
 	private Chatbot chatBotClay;  // sipmleBot
 	private ChatView view; //display
 	private ChatFrame baseFrame; // for the GUI
 	
 	
-	
+	/**
+	 * Declares the variables.
+	 */
 	public ChatController()
 	{
 		view = new ChatView();
@@ -33,7 +32,9 @@ public class ChatController
 	}
 	
 
-	
+	/**
+	 * starts the program.
+	 */
 	public void start()
 	{
 		view.displayResponse("Hello " + chatBotClay.getUserName());
@@ -41,7 +42,9 @@ public class ChatController
 	}
 	
 	
-	
+	/**
+	 * starts chat up, so you can talk to it.
+	 */
 	private void chat()
 	{
 		String textFromUser = view.getAnswer("Talk to the chatbot");   
@@ -52,7 +55,11 @@ public class ChatController
 		}
 	}
 	
-	
+	/**
+	 * The chatbot takes info, and stores it
+	 * @param conversation
+	 * @return
+	 */
 	public String fromUserToChatbot(String conversation)
 	{
 		String botResponse = "";
@@ -84,6 +91,9 @@ public class ChatController
 		return baseFrame;
 	}
 	
+	/**
+	 * Says stuff when you shut it down, then exits.
+	 */
 	private void shutDown()
 	{
 		view.displayResponse("Goodbye, " + chatBotClay.getUserName() + " it has been fun.");

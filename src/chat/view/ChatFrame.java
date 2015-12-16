@@ -10,12 +10,20 @@ public class ChatFrame extends JFrame
 	private ChatController baseController;
 	private ChatPanel basePanel;
 	
+	/**
+	 * sets up the controller, panel, and frame.
+	 * @param baseController
+	 */
 	public ChatFrame (ChatController baseController)
 	{
 		this.baseController = baseController;
 		basePanel = new ChatPanel(baseController);
 		setupFrame();
 	}
+	
+	/**
+	 * This tells the frame all of the properties it shold have.
+	 */
 	
 	private void setupFrame()
 	{
