@@ -87,16 +87,10 @@ public class Chatbot
 		this.keyboardMashList.add("cvb");
 		this.keyboardMashList.add(",./");
 	}
-	
-	
-
 	private void buildQuitList()
 	{
 		this.quitList.add("quit");
 	}
-	
-	
-	
 	
 	/**
 	 * checks the length of whatever you want it to check.
@@ -116,19 +110,14 @@ public class Chatbot
 		
 		return hasLength;
 	}
-	
-	
-
 	public String getUserName()
 	{
 		return userName;
 	}
-	
 	public String getContent()
 	{
 		return content;
 	}
-
 	/**
 	 * Checks the "content" in what you type in, converting it to Lower-case beforehand.
 	 * @param currentInput
@@ -221,8 +210,6 @@ public class Chatbot
 		return hasQuit;
 	
 	}
-	
-	
 	/**
 	 * Random Conversations are here. 
 	 * @param currentInput

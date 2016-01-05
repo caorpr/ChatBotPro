@@ -92,7 +92,7 @@ public class ChatController
 	}
 	
 	/**
-	 * Says stuff when you shut it down, then exits.
+	 * Says stuff when you shut it down, then exits.`
 	 */
 	private void shutDown()
 	{
