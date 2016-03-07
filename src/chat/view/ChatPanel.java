@@ -29,6 +29,7 @@ public class ChatPanel extends JPanel
 	private JTextField typingField;
 	private JLabel promptLabel;
 	private JButton submitButton;
+	private JScrollPane textPane;
 	//More ChatBot
 	
 	/**
@@ -56,11 +57,26 @@ public class ChatPanel extends JPanel
 	}
 	
 	
+	private void setupChatPane()
+	{
+		chatArea.setLineWrap(true);
+		chatArea.setWrapStyleWord(true);
+		chatArea.setEnabled(false);
+		chatArea.setEditable(false);
+		chatArea.setBackground(Color.MAGENTA);
+		textPane = new JScrollPane(chatArea);
+		baseLayout.putConstraint(SpringLayout.EAST, typingField, 0, SpringLayout.EAST, textPane);
+		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+	}
+	
+	
 	/**
 	 * All this is for the GUI, and telling it what to do.
 	 */
 	private void setupPanel()
 	{
+		this.setLayout(baseLayout);
 		this.add(chatArea);
 		this.add(typingField);
 		this.add(promptLabel);
@@ -68,6 +84,8 @@ public class ChatPanel extends JPanel
 		this.add(submitButton);
 		typingField.setToolTipText("hints");
 	}
+	
+	
 	
 	/**
 	 * Crap code for the GUI.

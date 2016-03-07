@@ -9,6 +9,7 @@ public class Chatbot
 	/**
 	 * Setting up everything.
 	 */
+	
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
 	private ArrayList<String> keyboardMashList;
