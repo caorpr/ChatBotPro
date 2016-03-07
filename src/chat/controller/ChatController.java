@@ -1,6 +1,11 @@
 package chat.controller;
 
 
+import java.util.ArrayList;
+
+import twitter4j.Status;
+import twitter4j.TwitterFactory;
+import chat.model.CTECTwitter;
 import chat.model.Chatbot;
 import chat.view.ChatFrame;
 import chat.view.ChatPanel;
@@ -10,16 +15,20 @@ import chat.view.ChatView;//ChatView
 // ChatView= ChatDisplay
 // displayText = displayResponse
 // collectUserText = getAnswer
-
+//Version 1.7??!
 
 public class ChatController 
 {
 	
+	
 	private Chatbot chatBotClay;  // sipmleBot
 	private ChatView view; //display
 	private ChatFrame baseFrame; // for the GUI
+	private CTECTwitter myTwitter;
+	private ChatController baseController;
 	
 	
+
 	/**
 	 * Declares the variables.
 	 */
@@ -100,6 +109,18 @@ public class ChatController
 		System.exit(0);
 	}
 	
+	
+	
+	public void sendTweet(String tweet)
+	{
+		myTwitter.sendTweet(tweet);
+	}
+	
+	
+	public void handleErrors(String error)
+	{
+		view.displayResponse(error);
+	}
 	
 }
 
