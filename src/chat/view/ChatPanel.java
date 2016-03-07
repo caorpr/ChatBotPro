@@ -29,6 +29,7 @@ public class ChatPanel extends JPanel
 	private JTextField typingField;
 	private JLabel promptLabel;
 	private JButton submitButton;
+	private JButton tweetButton;
 	private JScrollPane textPane;
 	//More ChatBot
 	
@@ -44,6 +45,7 @@ public class ChatPanel extends JPanel
 		promptLabel = new JLabel("");
 		baseLayout = new SpringLayout();
 	
+		tweetButton = new JButton("send a tweet");
 		submitButton = new JButton("suff");
 
 		
@@ -82,6 +84,7 @@ public class ChatPanel extends JPanel
 		this.add(promptLabel);
 		this.setLayout(baseLayout);
 		this.add(submitButton);
+		this.add(tweetButton);
 		typingField.setToolTipText("hints");
 	}
 	
@@ -115,6 +118,14 @@ public class ChatPanel extends JPanel
 				chatArea.append("\nUser: " + userText);     //display the users text
 				chatArea.append("\nChatbot: " + response);     //display answer
 				typingField.setText("");    //clear user field 
+			}
+		});
+		
+		tweetButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				
 			}
 		});
 	}
