@@ -27,7 +27,7 @@ public class CTECTwitter
 	{
 		try
 		{
-		chatbotTwitter.updateStatus("## ### ########### #HASHTAGS #MOREHASHTAGS #SPAMMINGTHOSEHASHTAGS!");
+		chatbotTwitter.updateStatus("#Clayton ### ## # #MOREHASHTAGS # ### # #HASHTAGS # # #### # #### ########### #SPAMMINGTHOSEHASHTAGS!");
 		
 	
 		}

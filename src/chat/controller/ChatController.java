@@ -37,7 +37,9 @@ public class ChatController
 		view = new ChatView();
 		String user = view.getAnswer("What is your name?");
 		chatBotClay = new Chatbot(user);
+		myTwitter = new CTECTwitter(this);
 		baseFrame = new ChatFrame(this);
+		
 	}
 	
 
