@@ -15,6 +15,7 @@ public class CTECTwitter
 	private Twitter chatbotTwitter;
 	private ChatController baseController;
 	
+
 	public CTECTwitter(ChatController baseController)
 	{
 		this.baseController = baseController;
