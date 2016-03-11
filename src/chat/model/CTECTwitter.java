@@ -36,4 +36,21 @@ public class CTECTwitter
 			baseController.handleErrors(error.getErrorMessage());
 		}
 	}
+
+
+public String topResults(List<String> wordsList)
+{
+	
+}
+
+
+
+public void loadTweets(String twitterHandle) throws TwitterException
+{
+	Paging statusPage = new Paging(1, 100);
+	
+	
+}
+
+
 }

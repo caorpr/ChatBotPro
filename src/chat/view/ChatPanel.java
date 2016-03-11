@@ -30,6 +30,7 @@ public class ChatPanel extends JPanel
 	private JLabel promptLabel;
 	private JButton submitButton;
 	private JButton tweetButton;
+	private JButton analyzeTwitterButton;
 	private JScrollPane textPane;
 	//More ChatBot
 	
@@ -47,6 +48,7 @@ public class ChatPanel extends JPanel
 	
 		tweetButton = new JButton("send a tweet");
 		submitButton = new JButton("suff");
+		analyzeTwitterButton = new JButton("analyze Twitter :)");
 
 		
 		setupPanel();
@@ -126,6 +128,16 @@ public class ChatPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				baseController.sendTweet("");
+			}
+		});
+		
+		analyzeTwitterButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String user = typingField.getText();
+				String results = baseController.analyze(user);
+				chatArea.setText(results);
 			}
 		});
 	}
