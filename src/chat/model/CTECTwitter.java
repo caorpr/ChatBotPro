@@ -66,7 +66,17 @@ public class CTECTwitter
 	
 	private String removePunctuation(String currentString)
 	{
-		return null;
+		String punctuation = ".,;:\"(){}^[]<>-"; // the backslash is to not make it have errors!
+		
+		String scrubbedString = "";
+		for(int i = 0; i < currentString.length(); i++)
+		{
+			if (punctuation.indexOf(currentString.charAt(i)) == -1)
+			{
+				scrubbedString += currentString.charAt(i);
+			}
+		}
+		return scrubbedString;
 	}
 
 	private void removeCommonEnglishWods(ArrayList<String> wordsList) 
