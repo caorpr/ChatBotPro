@@ -1,5 +1,7 @@
 package chat.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 import chat.controller.ChatController;
@@ -79,11 +81,31 @@ public class CTECTwitter
 		return scrubbedString;
 	}
 
-	private void removeCommonEnglishWods(ArrayList<String> wordsList) 
+	private List removeCommonEnglishWords(ArrayList<String> wordList) 
 	{
-
+		String[] boringWords = importWordsToArray();
+			
+		for (int count = 0; count < wordList.size(); count++)
+		{
+			for (int removeSpot = 0; removeSpot < boringWords.length; removeSpot++)
+			{
+				if (wordList.get(count).equalsIgnoreCase(boringWords[removeSpot]))
+				{
+					wordList.remove(count);
+					count--;
+					removeSpot = boringWords.length; // Exit the inner loop
+				}
+			}
+		}
+		//Comment this if you want to keep Twitter usernames in your word list.
+//		removeTwitterUsernamesFromList(wordList);
+	
+		return wordList;
 	}
-
+	
+	
+	
+	
 	private void removeEmptyText()
 	{
 		for (int spot = 0; spot < wordsList.size(); spot++)
@@ -97,6 +119,52 @@ public class CTECTwitter
 	}
 
 	
+	
+	private String[] importWordsToArray()
+	{
+		String[] boringWords;
+		int wordsCount = 0;
+		try
+		{
+			Scanner wordFile = new Scanner(new File("commonWords.txt"));
+			while (wordFile.hasNext())
+			{
+				wordsCount++;
+				wordFile.next();
+			}
+			wordFile.reset();
+			boringWords = new String[wordsCount];
+			int boringWordCount = 0;
+			while (wordFile.hasNext())
+			{
+				boringWords[boringWordCount] = wordFile.next();
+				boringWordCount++;
+			}
+			wordFile.close();
+		}
+		catch (FileNotFoundException e)
+		{
+			baseController.handleErrors(e.getMessage());
+			return new String[0];
+		}
+		return boringWords;
+	}
+	
+	
+	
+	
+	
+	private void removeTwitterUsernamesFromList(List<String> wordList)
+	{
+		for (int wordCount = 0; wordCount < wordList.size(); wordCount++)
+		{
+			if (wordList.get(wordCount).length() >= 1 && wordList.get(wordCount).charAt(0) == '@')
+			{
+				wordList.remove(wordCount);
+				wordCount--;
+			}
+		}
+	}
 
 
 
