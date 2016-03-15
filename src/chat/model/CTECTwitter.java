@@ -60,7 +60,7 @@ public class CTECTwitter
 				wordsList.add(removePunctuation(word).toLowerCase());
 			}
 		}
-		removeCommonEnglishWods(wordsList);
+		removeCommonEnglishWords(wordsList);
 		removeEmptyText();
 	
 	
