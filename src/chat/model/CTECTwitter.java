@@ -165,6 +165,38 @@ public class CTECTwitter
 			}
 		}
 	}
+	
+	
+	
+	public String topResults()
+	{
+		String tweetResults = "";
+		
+		int topWordLocation = 0;
+		int topCount = 0;
+		
+		for (int index = 0; index < wordsList.size(); index++)
+		{
+			int wordUseCount = 1;
+			
+			for(int spot = index + 1; spot < wordsList.size(); spot++)
+			{
+				if(wordsList.get(index).equals(wordsList.get(spot)))
+				{
+					wordUseCount++;
+				}
+				if(wordUseCount > topCount)
+				{
+					topCount = wordUseCount;
+					topWordLocation = index;
+				}
+			}
+		}
+		
+		tweetResults = "The most used word in the tweets was " + wordsList.get(topWordLocation) + " and was used " +
+				topCount  + " times!";
+		return tweetResults;
+	}
 
 
 

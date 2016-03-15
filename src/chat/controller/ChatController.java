@@ -4,6 +4,7 @@ package chat.controller;
 import java.util.ArrayList;
 
 import twitter4j.Status;
+import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import chat.model.CTECTwitter;
 import chat.model.Chatbot;
@@ -105,6 +106,7 @@ public class ChatController
 	/**
 	 * Says stuff when you shut it down, then exits.`
 	 */
+	
 	private void shutDown()
 	{
 		view.displayResponse("Goodbye, " + chatBotClay.getUserName() + " it has been fun.");
@@ -122,11 +124,20 @@ public class ChatController
 	public String analyze(String userName)
 	{
 		String userAnalysis = "The Twitter user " + userName + "has....";
+		try 
+		{
+			myTwitter.loadTweets(userName);
+		} 
+		catch (TwitterException error) 
+		{
+			handleErrors(error.getErrorMessage());
+		}
+		
+		userAnalysis += myTwitter.topResults();
 		
 		return userAnalysis;
 	}
-	
-	
+
 	public void handleErrors(String error)
 	{
 		view.displayResponse(error);
