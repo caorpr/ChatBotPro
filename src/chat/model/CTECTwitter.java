@@ -44,6 +44,8 @@ public class CTECTwitter
 
 	public void loadTweets(String twitterHandle) throws TwitterException
 	{
+		statusList.clear();
+		wordsList.clear();
 		Paging statusPage = new Paging(1, 100);
 		int page = 1;
 		while (page <= 10)
@@ -81,6 +83,7 @@ public class CTECTwitter
 		return scrubbedString;
 	}
 
+	
 	private List removeCommonEnglishWords(ArrayList<String> wordList) 
 	{
 		String[] boringWords = importWordsToArray();
@@ -124,29 +127,23 @@ public class CTECTwitter
 	{
 		String[] boringWords;
 		int wordsCount = 0;
-		try
+
+		Scanner wordFile = new Scanner(getClass().getResourceAsStream("commonWords.txt"));
+		while (wordFile.hasNext()) 
 		{
-			Scanner wordFile = new Scanner(new File("commonWords.txt"));
-			while (wordFile.hasNext())
-			{
-				wordsCount++;
-				wordFile.next();
-			}
-			wordFile.reset();
-			boringWords = new String[wordsCount];
-			int boringWordCount = 0;
-			while (wordFile.hasNext())
-			{
-				boringWords[boringWordCount] = wordFile.next();
-				boringWordCount++;
-			}
-			wordFile.close();
+			wordsCount++;
+			wordFile.next();
 		}
-		catch (FileNotFoundException e)
+		wordFile = new Scanner(getClass().getResourceAsStream("commonWords.txt"));
+		boringWords = new String[wordsCount];
+		int boringWordCount = 0;
+		while (wordFile.hasNext()) 
 		{
-			baseController.handleErrors(e.getMessage());
-			return new String[0];
+			boringWords[boringWordCount] = wordFile.next();
+			boringWordCount++;
 		}
+		wordFile.close();
+
 		return boringWords;
 	}
 	
@@ -193,11 +190,65 @@ public class CTECTwitter
 			}
 		}
 		
-		tweetResults = "The most used word in the tweets was " + wordsList.get(topWordLocation) + " and was used " +
-				topCount  + " times!";
+		tweetResults = "The most used word in the tweets was " + wordsList.get(topWordLocation) + " and was used " + topCount  + " times!";
 		return tweetResults;
 	}
+	
+	
+	
+	public String sampleInvestigation() //put a string parameter here.
+	{
+		String results = "";
+		
+		Query query = new Query("marathon"); // put the parameter in there.
+		query.setCount(100);
+		query.setGeoCode(new GeoLocation(40.587521, -111.869178), 5, Query.MILES); //(within 5 miles of the point)
+		query.setSince("2016-1-1");
+		try
+		{
+			QueryResult result = chatbotTwitter.search(query);
+			results.concat("Count : " + result.getTweets().size());
+			for (Status tweet : result.getTweets())
+			{
+				results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+			}
+		}
+		catch (TwitterException error)
+		{
+			error.printStackTrace();
+		}
+		
+		return results;
+	}
 
+	
+	public String checkForMemes(String memeResults)
+	{
+		String results = "";
+		Query memeQuery = new Query(memeResults);
+		memeQuery.setSince("1998-11-12");
+		
+		memeQuery.setGeoCode(new GeoLocation(40.549930, 111.860949), 0.1524, Query.KILOMETERS); //500 feet. This is just about Alta
+	
+		try
+		{
+			QueryResult result = chatbotTwitter.search(memeQuery);
+			results.concat("The most used meme at alta is: " + result.getClass().getResourceAsStream("Memes.txt"));;
+			for (Status tweet : result.getTweets())
+			{
+				results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+			}
+		}
+		catch (TwitterException error)
+		{
+			error.printStackTrace();
+		}
+		
+		return results;
+	}
+	
+	
+	
 
 
 }
