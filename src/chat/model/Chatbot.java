@@ -49,11 +49,11 @@ public class Chatbot
 	{
 		this.memesList.add("cute animals");
 		this.memesList.add("doge");
-		this.memesList.add("harry potter");
+		this.memesList.add("deez nuts");
 		this.memesList.add("john cenna");
 		this.memesList.add("runescape");
 		this.memesList.add("settler's of ctan");
-		this.memesList.add("yugioh");
+		this.memesList.add("trollface");
 		this.memesList.add("sanik");
 		this.memesList.add("luigi death stare");
 		this.memesList.add("philosoraptor");

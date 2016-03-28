@@ -40,7 +40,9 @@ public class CTECTwitter
 		}
 	}
 
-
+	
+	
+	
 
 	public void loadTweets(String twitterHandle) throws TwitterException
 	{
@@ -222,27 +224,46 @@ public class CTECTwitter
 	}
 
 	
-	public String checkForMemes(String memeResults)
+	
+	
+	
+	public String checkForMemes(ArrayList<String> memeResults) //	private ArrayList<String> memesList;
 	{
 		String results = "";
-		Query memeQuery = new Query(memeResults);
-		memeQuery.setSince("1998-11-12");
 		
-		memeQuery.setGeoCode(new GeoLocation(40.549930, 111.860949), 0.1524, Query.KILOMETERS); //500 feet. This is just about Alta
-	
-		try
+		int biggest = 0;
+		String bigMeme = "0";
+		QueryResult finalResult = null;
+		//loop over list
+		for (int spot = 0; spot < memeResults.size(); spot++)
 		{
-			QueryResult result = chatbotTwitter.search(memeQuery);
-			results.concat("The most used meme at alta is: " + result.getClass().getResourceAsStream("Memes.txt"));;
-			for (Status tweet : result.getTweets())
+			Query memeQuery = new Query(memeResults.get(spot));
+			memeQuery.setSince("2006-11-12"); // Twitter probably wasn't even up then :)
+			memeQuery.setCount(105);
+			memeQuery.setGeoCode(new GeoLocation(40.549930, 111.860949), 0.1524, Query.KILOMETERS); //500 feet. This is just about Alta
+			try
 			{
-				results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+				QueryResult result = chatbotTwitter.search(memeQuery);
+				if(result.getCount() > biggest)
+				{
+					biggest = result.getCount();
+					bigMeme = memeResults.get(spot);
+					finalResult = result;
+				}
+				
+				
+			}
+			catch (TwitterException error)
+			{
+				error.printStackTrace();
 			}
 		}
-		catch (TwitterException error)
+		
+		for (Status tweet : finalResult.getTweets())
 		{
-			error.printStackTrace();
+			results+="@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n";
 		}
+		
 		
 		return results;
 	}
