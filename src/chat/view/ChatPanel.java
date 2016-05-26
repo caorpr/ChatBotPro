@@ -5,17 +5,17 @@ package chat.view;
  * MUCH IMPORTS
  */
 import javax.swing.ImageIcon;
-
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;     //  but Mr. H says it is okay for any of the projects that we do.
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-
 import java.awt.Color;
 import java.awt.event.*;
 
 import chat.controller.ChatController;
+import chat.controller.IOController;
 
 import javax.swing.*;
 
@@ -31,6 +31,8 @@ public class ChatPanel extends JPanel
 	private JButton submitButton;
 	private JButton tweetButton;
 	private JButton analyzeTwitterButton;
+	private JButton saveButton;
+	private JButton loadButton;
 	private JScrollPane textPane;
 	//More ChatBot
 	
@@ -45,7 +47,6 @@ public class ChatPanel extends JPanel
 		typingField = new JTextField(30);
 		promptLabel = new JLabel("");
 		baseLayout = new SpringLayout();
-	
 		tweetButton = new JButton("send a tweet");
 		submitButton = new JButton("suff");
 		analyzeTwitterButton = new JButton("analyze Twitter :)");
@@ -81,12 +82,14 @@ public class ChatPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
-		this.add(chatArea);
+		//this.add(chatArea);
 		this.add(typingField);
 		this.add(promptLabel);
 		this.setLayout(baseLayout);
 		this.add(submitButton);
 		this.add(tweetButton);
+		this.add(saveButton);
+		this.add(loadButton);
 		typingField.setToolTipText("hints");
 	}
 	
@@ -140,6 +143,30 @@ public class ChatPanel extends JPanel
 				chatArea.setText(results);
 			}
 		});
+		
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String file = IOController.saveFile(chatArea.getText());
+				promptLabel.setText(file);
+			}
+		});
+		
+		
+		loadButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String loadedText = IOController.readTextFromFile(promptLabel.getText());
+				chatArea.setText(loadedText);
+			}
+		});
+		
+		
+		
+		
+		
 	}
 		
 	public JTextField getTextField()
